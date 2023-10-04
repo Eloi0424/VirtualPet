@@ -1,4 +1,4 @@
-import { GifRender } from "../components/GifRender"
+import { GifRender } from "../../utils/components/GifRender"
 @Component
 export struct pet{
   build(){
