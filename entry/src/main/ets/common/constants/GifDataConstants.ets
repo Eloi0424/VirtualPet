@@ -1,6 +1,7 @@
-import {GifDataItem} from "../utils/components/GifRenderDataComponent"
 
-const GifDatas:Record<string,GifDataItem> = {
+import { GifDataItem } from '../bean/GifData'
+
+export const GifDatas:Record<string,GifDataItem> = {
   "vup_Default_Happy_1":{
     state : AnimationStatus.Initial,
     imageFrameInfoList: [
@@ -53,9 +54,4 @@ const GifDatas:Record<string,GifDataItem> = {
     renderWidth: 400,
     renderHeight: 400
   },
-}
-export class MainViewModel{
-  getGifDate(motion_name:string):GifDataItem{
-    return GifDatas[motion_name]
-  }
 }

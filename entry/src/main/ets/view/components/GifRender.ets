@@ -1,4 +1,4 @@
-import { GifDataItem } from './GifRenderDataComponent'
+import { GifDataItem } from '../../common/bean/GifData'
 
 
 @Component

@@ -1,15 +1,12 @@
-import { GifRender } from "../utils/components/GifRender"
-import {GifDataItem} from "../utils/components/GifRenderDataComponent"
-import {MainViewModel} from "../viewmodel/MainViewModel"
-
-
+import { GifRender } from "../view/components/GifRender"
+import {GifDataItem} from "../common/bean/GifData"
+import {GifDataViewModel} from "../viewmodel/GifRenderViewModel"
 
 @Entry
 @Component
 struct Index {
-  @State viewModel:MainViewModel = new MainViewModel()
+  @State viewModel:GifDataViewModel = new GifDataViewModel()
   @State backgroundPicture:Resource = $rawfile("backgroundPictures/flower.png")
-
   @State Gif:GifDataItem = this.viewModel.getGifDate("vup_Default_PoorCondition_1")
   build() {
     Column(){
@@ -39,4 +36,3 @@ struct Index {
     this.Gif.iterations = 10
   }
 }
-//todo:想办法封装imageFrameInfoList,实现一个state 变量决定现在播放什么GIF
