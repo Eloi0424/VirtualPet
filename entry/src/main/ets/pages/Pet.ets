@@ -1,7 +1,7 @@
 import { GifRender } from "../view/components/GifRender"
 import {GifDataItem} from "../common/bean/GifData"
 import GifDataViewModel from "../viewmodel/GifDataViewModel"
-
+import { InteractBar } from '../view/components/InteractBar'
 @Entry
 @Component
 struct Index {
@@ -12,25 +12,10 @@ struct Index {
     Column(){
       Stack(){
         Image(this.backgroundPicture)
+
+
         Column() {
-          Row(){
-            Button("睡觉")
-              .stateEffect(true)
-              .type(ButtonType.Capsule)
-              .onClick(()=>{
-                this.Gif = GifDataViewModel.getGifData("vup_Sleep_A_Happy")
-                this.GifName = "vup_Sleep_A_Happy"
-                this.Gif.state= AnimationStatus.Running
-              })
-            Button("起床")
-              .stateEffect(true)
-              .type(ButtonType.Capsule)
-              .onClick(()=>{
-                this.Gif = GifDataViewModel.getGifData("vup_Sleep_C_Happy")
-                this.GifName = "vup_Sleep_C_Happy"
-                this.Gif.state= AnimationStatus.Running
-              })
-          }
+          InteractBar({Gif:$Gif,GifName:$GifName})
           GifRender({ Gif: $Gif, GifName:$GifName})
         }
       }//main shows
