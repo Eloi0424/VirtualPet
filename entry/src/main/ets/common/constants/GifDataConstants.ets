@@ -3,6 +3,7 @@ import { GifDataItem } from '../bean/GifData'
 
 export const GifDatas:Record<string,GifDataItem> = {
   "vup_Default_Happy_1":{
+    name: "vup_Default_Happy_1",
     state : AnimationStatus.Initial,
     imageFrameInfoList: [
       {src: $rawfile("motions/vup/Default/Happy/1/循环A_000_125.png") },
@@ -20,13 +21,14 @@ export const GifDatas:Record<string,GifDataItem> = {
       {src: $rawfile("motions/vup/Default/Happy/1/循环A_012_250.png") },
     ],
     duration: 1000,
-    iterations: 20,
+    iterations: -1,
     isReverse: false,
     fillMode: FillMode.Forwards,
     renderWidth: 400,
     renderHeight: 400
   },
   "vup_Default_PoorCondition_1":{
+    name: "vup_Default_PoorCondition_1",
     state : AnimationStatus.Initial,
     imageFrameInfoList: [
       {src: $rawfile("motions/vup/Default/PoorCondition/1/_000_125.png") },
@@ -48,7 +50,61 @@ export const GifDatas:Record<string,GifDataItem> = {
       {src: $rawfile("motions/vup/Default/PoorCondition/1/_016_125.png") },
     ],
     duration: 1000,
-    iterations: 20,
+    iterations: -1,
+    isReverse: false,
+    fillMode: FillMode.Forwards,
+    renderWidth: 400,
+    renderHeight: 400
+  },
+  "vup_Sleep_A_Happy":{
+    name :"vup_Sleep_A_Happy",
+    state : AnimationStatus.Initial,
+    imageFrameInfoList: [
+      {src: $rawfile("motions/vup/Sleep/A_Happy/happysleep_000_125.png") },
+      {src: $rawfile("motions/vup/Sleep/A_Happy/happysleep_001_125.png") },
+      {src: $rawfile("motions/vup/Sleep/A_Happy/happysleep_002_125.png") },
+      {src: $rawfile("motions/vup/Sleep/A_Happy/happysleep_003_125.png") },
+      {src: $rawfile("motions/vup/Sleep/A_Happy/happysleep_004_125.png") },
+    ],
+    duration: 2000,
+    iterations: 1,
+    isReverse: false,
+    fillMode: FillMode.Forwards,
+    renderWidth: 400,
+    renderHeight: 400
+  },
+  "vup_Sleep_B_Happy":{
+    name :"vup_Sleep_B_Happy",
+    state : AnimationStatus.Initial,
+    imageFrameInfoList: [
+      {src: $rawfile("motions/vup/Sleep/B_Happy/happysleep_000_125.png") },
+      {src: $rawfile("motions/vup/Sleep/B_Happy/happysleep_001_125.png") },
+      {src: $rawfile("motions/vup/Sleep/B_Happy/happysleep_002_125.png") },
+      {src: $rawfile("motions/vup/Sleep/B_Happy/happysleep_003_125.png") },
+      {src: $rawfile("motions/vup/Sleep/B_Happy/happysleep_004_125.png") },
+      {src: $rawfile("motions/vup/Sleep/B_Happy/happysleep_005_125.png") },
+    ],
+    duration: 2000,
+    iterations: -1,
+    isReverse: false,
+    fillMode: FillMode.Forwards,
+    renderWidth: 400,
+    renderHeight: 400
+  },
+  "vup_Sleep_C_Happy":{
+    name :"vup_Sleep_C_Happy",
+    state : AnimationStatus.Initial,
+    imageFrameInfoList: [
+      {src: $rawfile("motions/vup/Sleep/C_Happy/happysleep_000_125.png") },
+      {src: $rawfile("motions/vup/Sleep/C_Happy/happysleep_001_125.png") },
+      {src: $rawfile("motions/vup/Sleep/C_Happy/happysleep_002_125.png") },
+      {src: $rawfile("motions/vup/Sleep/C_Happy/happysleep_003_125.png") },
+      {src: $rawfile("motions/vup/Sleep/C_Happy/happysleep_004_125.png") },
+      {src: $rawfile("motions/vup/Sleep/C_Happy/happysleep_005_125.png") },
+      {src: $rawfile("motions/vup/Sleep/C_Happy/happysleep_006_125.png") },
+    ],
+    duration: 2000,
+    iterations: 1,
     isReverse: false,
     fillMode: FillMode.Forwards,
     renderWidth: 400,

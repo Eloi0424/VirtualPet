@@ -1,4 +1,6 @@
+@Observed
 export class GifDataItem{
+  name:string
   state:AnimationStatus
   imageFrameInfoList:ImageFrameInfo []
   duration:number
