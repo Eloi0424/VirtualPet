@@ -43,7 +43,9 @@ struct MainPage{
           this.currentIndex = item.num
         })
       })
-    }.margin({ left: 24 })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(VerticalAlign.Center)
   }
   build(){
     Navigation(){
@@ -55,7 +57,7 @@ struct MainPage{
       {
         Pet()
       }
-      if(this.currentIndex == 1)
+      if(this.currentIndex == 2)
       {
 
       }
