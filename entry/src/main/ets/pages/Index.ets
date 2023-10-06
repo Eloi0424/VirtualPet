@@ -1,4 +1,5 @@
 import { Pet } from './Pet'
+import {Setting} from './Setting'
 @Entry
 @Component
 struct MainPage{
@@ -38,12 +39,21 @@ struct MainPage{
             .lineHeight(14)
             .fontWeight(500)
             .margin({ top: 3 })
-        }.width(104).height(56)
+        }
+        .width("30%")
+        .height("30%")
+        .margin({bottom:3})
         .onClick(() => {
           this.currentIndex = item.num
         })
       })
-    }.margin({ left: 24 })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(VerticalAlign.Center)
+    .borderRadius(12)
+    .width('100%')
+    .height('100%')
+    .margin({bottom:10})
   }
   build(){
     Navigation(){
@@ -55,11 +65,13 @@ struct MainPage{
       {
         Pet()
       }
-      if(this.currentIndex == 1)
+      if(this.currentIndex == 2)
       {
-
+        Setting()
       }
     }
+    .mode(NavigationMode.Stack)
     .toolBar(this.NavigationToolbar())
+    .hideTitleBar(true)
   }
 }

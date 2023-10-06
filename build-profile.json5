@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\13907\\.ohos\\config\\auto_debug_VirtualPet_com.eloi.virtualpet_2850086000400102962.cer",
+          "storePassword": "0000001A3043F380E7B8E8F11569651FC0BAB93ED5D5F55264C5EF38F88AF850BA5E0B2A5457928812F8",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001AF62A56EA70C3FF26707132AEECB06521829452E8F8E66F89F3626CC49CB0A4F9D935D57A0693",
+          "profile": "C:\\Users\\13907\\.ohos\\config\\auto_debug_VirtualPet_com.eloi.virtualpet_2850086000400102962.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\13907\\.ohos\\config\\auto_debug_VirtualPet_com.eloi.virtualpet_2850086000400102962.p12"
+        }
+      }
+    ],
     "compileSdkVersion": 9,
     "compatibleSdkVersion": 9,
     "products": [
@@ -11,8 +25,7 @@
     ]
   },
   "modules": [
-
-  {
+    {
       "name": "entry",
       "srcPath": "./entry",
       "targets": [
@@ -23,5 +36,6 @@
           ]
         }
       ]
-    }]
+    }
+  ]
 }
