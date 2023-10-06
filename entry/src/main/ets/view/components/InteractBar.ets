@@ -58,7 +58,7 @@ export struct InteractBar{
                   this.GifName = "vup_WORK_Study_A_normal"
                   this.Gif.state = AnimationStatus.Running
                 },
-              },//Todo
+              },//Todo    实现状态切换
               {
                 title: '研究',
                 action: () => {
