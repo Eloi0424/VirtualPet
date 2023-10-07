@@ -1,4 +1,5 @@
 import * as commonConst from '../common/constants/ListStyleConstants';
+import PreferencesUtil from '../model/PreferencesUtil';
 
 @Component
 export struct Setting{
@@ -25,12 +26,17 @@ export struct Setting{
           offset: { dx: 0, dy: -10 },
           sheets: [
             {
-              title: '花朵',
+              title: '紫花',
               action: () => {
-
+                PreferencesUtil.saveBackgroundPicture('backgroundPictures/purpleFlower.png')
               },
             },//Todo    实现数据持久化，通过数据库读取背景图片 来改变背景
-
+            {
+              title: '黄花',
+              action:()=>{
+                PreferencesUtil.saveBackgroundPicture('backgroundPictures/yellowFlower.png')
+              },
+            }
           ]
         })
       }
@@ -79,14 +85,7 @@ export struct Setting{
           }
           .height(commonConst.THOUSANDTH_80)
           .borderRadius(commonConst.DEFAULT_12)
-          // .onClick(() => {
-          //   router.pushUrl({
-          //     url: 'pages/TaskEditPage',
-          //     params: {
-          //       params: formatParams(item),
-          //     }
-          //   })
-          // })
+          .onClick(item.action)
           .backgroundColor($r('app.color.white'))
         })
       }

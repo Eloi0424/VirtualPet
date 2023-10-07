@@ -1,10 +1,17 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
+import { GlobalContext } from '../common/utils/GlobalContext';
+import PreferencesUtil from '../model/PreferencesUtil'
+
 
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+
+    GlobalContext.getContext().setObject('abilityWant', want);
+    PreferencesUtil.createPreferences(this.context);
+    // PreferencesUtil.saveBackgroundPicture('backgroundPictures/flower.png')
   }
 
   onDestroy() {

@@ -2,11 +2,24 @@ import { GifRender } from "../view/components/GifRender"
 import {GifDataItem} from "../common/bean/GifData"
 import GifDataViewModel from "../viewmodel/GifDataViewModel"
 import { InteractBar } from '../view/components/InteractBar'
+import  PreferencesUtil  from '../model/PreferencesUtil'
+import Logger from '../common/utils/Logger'
+
+
+const TAG = '[Pet]';
 @Component
 export struct Pet {
-  @State backgroundPicture:Resource = $rawfile("backgroundPictures/flower.png")
+  @State backgroundPicture:Resource = $rawfile("backgroundPictures/yellowFlower.png")
   @State Gif:GifDataItem = GifDataViewModel.getGifData("vup_Default_PoorCondition_1")
   @State GifName:string = "vup_Default_PoorCondition_1"
+  aboutToAppear(){
+    PreferencesUtil.getBackgroundPicture().then((value) => {
+      this.backgroundPicture = $rawfile(value);
+      // this.backgroundPicture = $rawfile("backgroundPictures/flower.png")
+      Logger.info(TAG, 'Get the value of changeFontSize: ' + value);
+    });
+    // this.backgroundPicture = $rawfile("backgroundPictures/flower.png")
+  }
   build() {
     Column(){
       Stack(){
