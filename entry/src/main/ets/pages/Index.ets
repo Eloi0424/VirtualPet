@@ -39,10 +39,7 @@ struct MainPage{
             .lineHeight(14)
             .fontWeight(500)
             .margin({ top: 3 })
-        }
-        .width("30%")
-        .height("30%")
-        .margin({bottom:3})
+        }.width(104).height(56)
         .onClick(() => {
           this.currentIndex = item.num
         })
