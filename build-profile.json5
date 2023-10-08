@@ -6,9 +6,9 @@
         "type": "HarmonyOS",
         "material": {
           "certpath": "C:\\Users\\13907\\.ohos\\config\\auto_debug_VirtualPet_com.eloi.virtualpet_2850086000400102962.cer",
-          "storePassword": "0000001A3043F380E7B8E8F11569651FC0BAB93ED5D5F55264C5EF38F88AF850BA5E0B2A5457928812F8",
+          "storePassword": "0000001ACAED9102CD78A74BBC05A9C9F9A742F74FA5798FD32FD22D4CE50A2C6AC8EDE95B5C78CC8C07",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001AF62A56EA70C3FF26707132AEECB06521829452E8F8E66F89F3626CC49CB0A4F9D935D57A0693",
+          "keyPassword": "0000001A75D8A88EF86D9EFCFC28A891B39912A4F5B1773A45C5EF6322A066926149412235F2E3066A57",
           "profile": "C:\\Users\\13907\\.ohos\\config\\auto_debug_VirtualPet_com.eloi.virtualpet_2850086000400102962.p7b",
           "signAlg": "SHA256withECDSA",
           "storeFile": "C:\\Users\\13907\\.ohos\\config\\auto_debug_VirtualPet_com.eloi.virtualpet_2850086000400102962.p12"

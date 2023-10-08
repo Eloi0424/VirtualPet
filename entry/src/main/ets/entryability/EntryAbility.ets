@@ -11,7 +11,6 @@ export default class EntryAbility extends UIAbility {
 
     GlobalContext.getContext().setObject('abilityWant', want);
     PreferencesUtil.createPreferences(this.context);
-    // PreferencesUtil.saveBackgroundPicture('backgroundPictures/flower.png')
   }
 
   onDestroy() {

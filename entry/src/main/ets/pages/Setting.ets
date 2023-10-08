@@ -28,13 +28,13 @@ export struct Setting{
             {
               title: '紫花',
               action: () => {
-                PreferencesUtil.saveBackgroundPicture('backgroundPictures/purpleFlower.png')
+                PreferencesUtil.saveData('backgroundPicture','backgroundPictures/purpleFlower.png')
               },
             },//Todo    实现数据持久化，通过数据库读取背景图片 来改变背景
             {
               title: '黄花',
               action:()=>{
-                PreferencesUtil.saveBackgroundPicture('backgroundPictures/yellowFlower.png')
+                PreferencesUtil.saveData('backgroundPicture','backgroundPictures/yellowFlower.png')
               },
             }
           ]

@@ -1,5 +1,7 @@
 import { Pet } from './Pet'
 import {Setting} from './Setting'
+// import {Status} from './Status'
+
 @Entry
 @Component
 struct MainPage{
@@ -56,7 +58,7 @@ struct MainPage{
     Navigation(){
       if(this.currentIndex == 0)
       {
-
+        // Status()
       }
       if(this.currentIndex == 1)
       {

@@ -18,23 +18,22 @@ export class PreferencesUtil {
     GlobalContext.getContext().setObject('getPreferences', Preferences);
   }
 
-  saveBackgroundPicture(BackgroundPicture: string) {
+  saveData(keyName,Data) {
     let getPreferences: Function = GlobalContext.getContext().getObject('getPreferences') as Function;
     getPreferences().then(async (preferences: dataPreferences.Preferences) => {
-      await preferences.put(KEY_BackgroundPicture, BackgroundPicture);
+      await preferences.put(keyName, Data);
       preferences.flush();
     }).catch((err: Error) => {
       Logger.error(TAG, 'put the preferences failed, err: ' + err);
     });
   }
 
-  async getBackgroundPicture() {
-    let BackgroundPicture: string
+  async getData(keyName) {
+    let Data
     let getPreferences: Function = GlobalContext.getContext().getObject('getPreferences') as Function;
-    BackgroundPicture = await (await getPreferences()).get(KEY_BackgroundPicture, BackgroundPicture);
-    return BackgroundPicture;
+    Data = await (await getPreferences()).get(keyName, Data);
+    return Data;
   }
-
 }
 
 export default new PreferencesUtil();

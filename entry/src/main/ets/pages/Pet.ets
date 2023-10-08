@@ -13,7 +13,7 @@ export struct Pet {
   @State Gif:GifDataItem = GifDataViewModel.getGifData("vup_Default_PoorCondition_1")
   @State GifName:string = "vup_Default_PoorCondition_1"
   aboutToAppear(){
-    PreferencesUtil.getBackgroundPicture().then((value) => {
+    PreferencesUtil.getData('backgroundPicture').then((value) => {
       this.backgroundPicture = $rawfile(value);
       // this.backgroundPicture = $rawfile("backgroundPictures/flower.png")
       Logger.info(TAG, 'Get the value of changeFontSize: ' + value);
