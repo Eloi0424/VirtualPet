@@ -15,10 +15,8 @@ export struct Pet {
   aboutToAppear(){
     PreferencesUtil.getData('backgroundPicture').then((value) => {
       this.backgroundPicture = $rawfile(value);
-      // this.backgroundPicture = $rawfile("backgroundPictures/flower.png")
       Logger.info(TAG, 'Get the value of changeFontSize: ' + value);
     });
-    // this.backgroundPicture = $rawfile("backgroundPictures/flower.png")
   }
   build() {
     Column(){
