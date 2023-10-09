@@ -2,42 +2,39 @@ import * as commonConst from '../common/constants/ListStyleConstants';
 import Logger from '../common/utils/Logger';
 import PreferencesUtil from '../model/PreferencesUtil';
 
-
-
-
-
+export const statusListDefault:Object[] = [
+  {
+    name : 'money',
+    value : 100,
+  },
+  {
+    name : 'emotion',
+    value : 100,
+  },
+  {
+    name : 'water',
+    value : 100,
+  },
+  {
+    name : 'food',
+    value : 100,
+  }
+]
 
 @Component
 export struct Status{
 
-  statusList:Object[] = [
-    {
-      name : 'money',
-      value : 100,
-    },
-    {
-      name : 'emotion',
-      value : 100,
-    },
-    {
-      name : 'water',
-      value : 100,
-    },
-    {
-      name : 'food',
-      value : 100,
-    }
-  ]
-
+  @State statusList:Object[] = []
 
   aboutToAppear() {
-    let obj
-    let TAG = 'Status '
-    for(obj of this.statusList) {
-      PreferencesUtil.getData(obj.name).then((value) => {
-        obj.value = value;
-        Logger.info(TAG, 'Get the value of changeFontSize: ' + value);
-      });
+    for(let obj of statusListDefault as any) {
+      PreferencesUtil.getData(obj.name).then((val)=>{
+        Logger.info('Status','Get'+obj.name+val.toString())
+        this.statusList.push({
+          name: obj.name,
+          value: val
+        })
+      })
     }
   }
 

@@ -1,4 +1,5 @@
 import * as commonConst from '../common/constants/ListStyleConstants';
+import Logger from '../common/utils/Logger';
 import PreferencesUtil from '../model/PreferencesUtil';
 
 @Component
@@ -29,12 +30,14 @@ export struct Setting{
               title: '紫花',
               action: () => {
                 PreferencesUtil.saveData('backgroundPicture','backgroundPictures/purpleFlower.png')
+                Logger.info('backgroundPicture', 'Set the value of changeFontSize: ' );
               },
-            },//Todo    实现数据持久化，通过数据库读取背景图片 来改变背景
+            },
             {
               title: '黄花',
               action:()=>{
                 PreferencesUtil.saveData('backgroundPicture','backgroundPictures/yellowFlower.png')
+                Logger.info('backgroundPicture', 'Set the value of changeFontSize: ' );
               },
             }
           ]

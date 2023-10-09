@@ -13,6 +13,9 @@ export struct Pet {
   @State Gif:GifDataItem = GifDataViewModel.getGifData("vup_Default_PoorCondition_1")
   @State GifName:string = "vup_Default_PoorCondition_1"
   aboutToAppear(){
+    PreferencesUtil.hasData('backgroundPicture').then((value)=>{
+      Logger.info(TAG, 'Has the value of changeFontSize: ' + value);
+    })
     PreferencesUtil.getData('backgroundPicture').then((value) => {
       this.backgroundPicture = $rawfile(value);
       Logger.info(TAG, 'Get the value of changeFontSize: ' + value);

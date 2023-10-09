@@ -18,22 +18,26 @@ export class PreferencesUtil {
     GlobalContext.getContext().setObject('getPreferences', Preferences);
   }
 
-  saveData(keyName,Data) {
-    let getPreferences: Function = GlobalContext.getContext().getObject('getPreferences') as Function;
-    getPreferences().then(async (preferences: dataPreferences.Preferences) => {
+  async saveData(keyName,Data) {
+      let getPreferences: Function = GlobalContext.getContext().getObject('getPreferences') as Function;
+      let preferences = await getPreferences()
       await preferences.put(keyName, Data);
-      preferences.flush();
-    }).catch((err: Error) => {
-      Logger.error(TAG, 'put the preferences failed, err: ' + err);
-    });
+      await preferences.flush();
   }
-
   async getData(keyName) {
     let Data
     let getPreferences: Function = GlobalContext.getContext().getObject('getPreferences') as Function;
     Data = await (await getPreferences()).get(keyName, Data);
     return Data;
   }
+
+  async hasData(keyName) {
+    let getPreferences: Function = GlobalContext.getContext().getObject('getPreferences') as Function;
+    let flag = await (await getPreferences()).has(keyName) as boolean;
+    Logger.info("hasData:",flag + "")
+    return flag;
+  }
+
 }
 
 export default new PreferencesUtil();

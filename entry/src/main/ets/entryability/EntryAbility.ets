@@ -2,7 +2,10 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import { GlobalContext } from '../common/utils/GlobalContext';
+import Logger from '../common/utils/Logger';
 import PreferencesUtil from '../model/PreferencesUtil'
+import StatusDecline from '../model/StatusDecline'
+import {statusListDefault} from '../pages/Status'
 
 
 export default class EntryAbility extends UIAbility {
@@ -11,6 +14,22 @@ export default class EntryAbility extends UIAbility {
 
     GlobalContext.getContext().setObject('abilityWant', want);
     PreferencesUtil.createPreferences(this.context);
+
+    for(let obj of statusListDefault as any){
+      PreferencesUtil.hasData(obj.name).then(exist =>{
+        if(!exist){
+          Logger.info("Set default:",obj.name,obj.value)
+          PreferencesUtil.saveData(obj.name, obj.value)
+        }
+      })
+    }
+
+    PreferencesUtil.hasData('backgroundPicture').then((exist)=>{
+      if(!exist){
+        Logger.info("Set default:",'backgroundPicture',"backgroundPictures/yellowFlower.png")
+        PreferencesUtil.saveData('backgroundPicture', "backgroundPictures/yellowFlower.png")
+      }
+    })
   }
 
   onDestroy() {
@@ -38,6 +57,10 @@ export default class EntryAbility extends UIAbility {
   onForeground() {
       // Ability has brought to foreground
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+      setInterval(async ()=>{
+        await StatusDecline.decline('water',1)
+        await StatusDecline.decline('food',1)
+      },5000)
   }
 
   onBackground() {
