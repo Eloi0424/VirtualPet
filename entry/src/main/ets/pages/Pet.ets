@@ -10,8 +10,8 @@ const TAG = '[Pet]';
 @Component
 export struct Pet {
   @State backgroundPicture:Resource = $rawfile("backgroundPictures/yellowFlower.png")
-  @State Gif:GifDataItem = GifDataViewModel.getGifData("vup_Default_PoorCondition_1")
-  @State GifName:string = "vup_Default_PoorCondition_1"
+  @State Gif:GifDataItem = GifDataViewModel.getGifData("vup_StartUP_Happy")
+  @State GifName:string = "vup_StartUP_Happy"
   @State petName:string = "Alice"
   aboutToAppear(){
     // PreferencesUtil.hasData('backgroundPicture').then((value)=>{

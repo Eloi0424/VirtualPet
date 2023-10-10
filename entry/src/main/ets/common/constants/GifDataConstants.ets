@@ -352,4 +352,33 @@ export const GifDatas:Record<string,GifDataItem> = {
     renderHeight: 400
   },
 
+
+  //启动动画
+  "vup_StartUP_Happy":{
+    name :"vup_StartUP_Happy",//Drink
+    state : AnimationStatus.Initial,
+    imageFrameInfoList: [
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_000_125.png"),duration: allDurationOfFrame },
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_001_125.png"),duration: allDurationOfFrame },
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_002_125.png"),duration: allDurationOfFrame },
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_003_125.png"),duration: allDurationOfFrame },
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_004_125.png"),duration: allDurationOfFrame },
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_005_125.png"),duration: allDurationOfFrame },
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_006_125.png"),duration: allDurationOfFrame },
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_007_125.png"),duration: allDurationOfFrame },
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_008_125.png"),duration: allDurationOfFrame },
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_009_125.png"),duration: allDurationOfFrame },
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_010_125.png"),duration: allDurationOfFrame },
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_011_125.png"),duration: allDurationOfFrame },
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_012_125.png"),duration: allDurationOfFrame },
+      {src: $rawfile("motions/vup/StartUP/Happy/启动动画_013_125.png"),duration: allDurationOfFrame },
+
+    ],
+    iterations: 1,
+    isReverse: false,
+    fillMode: FillMode.Forwards,
+    renderWidth: 400,
+    renderHeight: 400
+  },
+
 }
