@@ -92,6 +92,20 @@ export struct GifRender {
             this.Gif.state = AnimationStatus.Running
             this.finishCount = 0
           }
+          else if(this.finishCount==2&&this.GifName == 'vup_Eat_Happy_back_lay'){
+            console.log(this.GifName)
+            this.Gif = GifDataViewModel.getGifData('vup_Default_Happy_1')
+            this.GifName = 'vup_Default_Happy_1'
+            this.Gif.state = AnimationStatus.Running
+            this.finishCount = 0
+          }
+          else if(this.finishCount==2&&this.GifName == 'vup_Drink_Happy_back_lay'){
+            console.log(this.GifName)
+            this.Gif = GifDataViewModel.getGifData('vup_Default_Happy_1')
+            this.GifName = 'vup_Default_Happy_1'
+            this.Gif.state = AnimationStatus.Running
+            this.finishCount = 0
+          }
           else
             this.Gif.state = AnimationStatus.Stopped
         })

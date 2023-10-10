@@ -9,7 +9,8 @@ import {
   INDEX_COMPONENT_WITH_PERCENT,
   ALL_PERCENT
 } from '../../common/constants/styleConstants';
-
+import PreferencesUtil from '../../model/PreferencesUtil';
+import StatusRise from '../../model/StatusRise'
 
 
 @Component
@@ -98,12 +99,14 @@ export struct InteractBar{
           this.Gif = GifDataViewModel.getGifData("vup_Eat_Happy_back_lay")
           this.GifName = "vup_Eat_Happy_back_lay"
           this.Gif.state= AnimationStatus.Running
+          StatusRise.Rise('food',10)
         })
       MenuItem({content:"喝水"})
         .onClick(()=>{
           this.Gif = GifDataViewModel.getGifData("vup_Drink_Happy_back_lay")
           this.GifName = "vup_Drink_Happy_back_lay"
           this.Gif.state= AnimationStatus.Running
+          StatusRise.Rise('water',10)
         })
     }
   }//Todo 喂食菜单实现
