@@ -1,20 +1,7 @@
 {
   "app": {
     "signingConfigs": [
-      {
-        "name": "default",
-        "type": "HarmonyOS",
-        "material": {
-          "certpath": "C:\\Users\\13907\\.ohos\\config\\auto_debug_VirtualPet_com.eloi.virtualpet_2850086000400102962.cer",
-          "storePassword": "0000001ACAED9102CD78A74BBC05A9C9F9A742F74FA5798FD32FD22D4CE50A2C6AC8EDE95B5C78CC8C07",
-          "keyAlias": "debugKey",
-          "keyPassword": "0000001A75D8A88EF86D9EFCFC28A891B39912A4F5B1773A45C5EF6322A066926149412235F2E3066A57",
-          "profile": "C:\\Users\\13907\\.ohos\\config\\auto_debug_VirtualPet_com.eloi.virtualpet_2850086000400102962.p7b",
-          "signAlg": "SHA256withECDSA",
-          "storeFile": "C:\\Users\\13907\\.ohos\\config\\auto_debug_VirtualPet_com.eloi.virtualpet_2850086000400102962.p12"
-        }
-      }
-    ],
+    ],//这个得根据本机证书来改，不同开发者不一样，默认的话删了列表里的就行
     "compileSdkVersion": 9,
     "compatibleSdkVersion": 9,
     "products": [
