@@ -16,7 +16,6 @@ export struct GifRender {
     Column({ space: 10 }) {
       ImageAnimator()
         .images(this.Gif.imageFrameInfoList)
-        .duration(this.Gif.duration)
         .state(this.Gif.state)
         .reverse(this.Gif.isReverse)
         .fillMode(this.Gif.fillMode)
@@ -55,6 +54,34 @@ export struct GifRender {
             console.log(this.GifName)
             this.Gif = GifDataViewModel.getGifData('vup_Default_PoorCondition_1')
             this.GifName = 'vup_Default_PoorCondition_1'
+            this.Gif.state = AnimationStatus.Running
+            this.finishCount = 0
+          }
+          else if(this.finishCount==2&&this.GifName == 'vup_WORK_Study_A_normal'){
+            console.log(this.GifName)
+            this.Gif = GifDataViewModel.getGifData('vup_WORK_Study_B_normal')
+            this.GifName = 'vup_WORK_Study_B_normal'
+            this.Gif.state = AnimationStatus.Running
+            this.finishCount = 0
+          }
+          else if(this.finishCount==2&&this.GifName == 'vup_WORK_Study_C_normal'){
+            console.log(this.GifName)
+            this.Gif = GifDataViewModel.getGifData('vup_Default_Happy_1')
+            this.GifName = 'vup_Default_Happy_1'
+            this.Gif.state = AnimationStatus.Running
+            this.finishCount = 0
+          }
+          else if(this.finishCount==2&&this.GifName == 'vup_WORK_WORKTWO_A_Nomal'){
+            console.log(this.GifName)
+            this.Gif = GifDataViewModel.getGifData('vup_WORK_WORKTWO_B_1_Nomal')
+            this.GifName = 'vup_WORK_WORKTWO_B_1_Nomal'
+            this.Gif.state = AnimationStatus.Running
+            this.finishCount = 0
+          }
+          else if(this.finishCount==2&&this.GifName == 'vup_WORK_WORKTWO_C_Nomal'){
+            console.log(this.GifName)
+            this.Gif = GifDataViewModel.getGifData('vup_Default_Happy_1')
+            this.GifName = 'vup_Default_Happy_1'
             this.Gif.state = AnimationStatus.Running
             this.finishCount = 0
           }

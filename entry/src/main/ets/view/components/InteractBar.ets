@@ -29,6 +29,7 @@ export struct InteractBar{
         })
       MenuItem({content:"起床"})
         .onClick(()=>{
+          this.Gif.state = AnimationStatus.Stopped
           this.Gif = GifDataViewModel.getGifData("vup_Sleep_C_Happy")
           this.GifName = "vup_Sleep_C_Happy"
           this.Gif.state= AnimationStatus.Running
@@ -60,11 +61,29 @@ export struct InteractBar{
                 },
               },//Todo    实现状态切换
               {
+                title:'退出读书',
+                action:()=>{
+                  this.Gif = GifDataViewModel.getGifData("vup_WORK_Study_C_normal")
+                  this.GifName = "vup_WORK_Study_C_normal"
+                  this.Gif.state = AnimationStatus.Running
+                }
+              },
+              {
                 title: '研究',
                 action: () => {
-                  console.log('apples')
+                  this.Gif = GifDataViewModel.getGifData("vup_WORK_WORKTWO_A_Nomal")
+                  this.GifName = "vup_WORK_WORKTWO_A_Nomal"
+                  this.Gif.state = AnimationStatus.Running
                 }
-              },//Todo 研究action实现
+              },
+              {
+              title: '退出研究',
+              action: () => {
+                this.Gif = GifDataViewModel.getGifData("vup_WORK_WORKTWO_C_Nomal")
+                this.GifName = "vup_WORK_WORKTWO_C_Nomal"
+                this.Gif.state = AnimationStatus.Running
+              }
+            },
             ]
           })
         })
@@ -74,7 +93,18 @@ export struct InteractBar{
   @Builder
   feedMenu(){
     Menu(){
-
+      MenuItem({content:"吃饭"})
+        .onClick(()=>{
+          this.Gif = GifDataViewModel.getGifData("vup_Eat_Happy_back_lay")
+          this.GifName = "vup_Eat_Happy_back_lay"
+          this.Gif.state= AnimationStatus.Running
+        })
+      MenuItem({content:"喝水"})
+        .onClick(()=>{
+          this.Gif = GifDataViewModel.getGifData("vup_Drink_Happy_back_lay")
+          this.GifName = "vup_Drink_Happy_back_lay"
+          this.Gif.state= AnimationStatus.Running
+        })
     }
   }//Todo 喂食菜单实现
 
