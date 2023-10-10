@@ -52,7 +52,7 @@ struct MainPage{
     .borderRadius(12)
     .width('100%')
     .height('100%')
-    .margin({bottom:10})
+    .margin({bottom:2})
   }
   build(){
     Navigation(){

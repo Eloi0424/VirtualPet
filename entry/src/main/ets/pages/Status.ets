@@ -8,17 +8,25 @@ export const statusListDefault:Object[] = [
     value : 100,
   },
   {
+    name : 'EXP',
+    value : 0,
+  },//Todo achieve level system
+  {
+    name : 'power',
+    value : 100 ,
+  },//Todo power system
+  {
     name : 'emotion',
+    value : 100,
+  },
+  {
+    name : 'food',
     value : 100,
   },
   {
     name : 'water',
     value : 100,
   },
-  {
-    name : 'food',
-    value : 100,
-  }
 ]
 
 @Component
