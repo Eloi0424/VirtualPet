@@ -6,12 +6,12 @@ import Logger from '../common/utils/Logger';
 import PreferencesUtil from '../model/PreferencesUtil'
 import StatusDecline from '../model/StatusDecline'
 import {statusListDefault} from '../pages/Status'
-
+import FormUtils from '../common//utils/FormUtils'
 
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-
+    console.log('ability preferdir'+this.context.preferencesDir)
     GlobalContext.getContext().setObject('abilityWant', want);
     PreferencesUtil.createPreferences(this.context);
     //判断用户首选项中有无对应状态Key
@@ -72,7 +72,14 @@ export default class EntryAbility extends UIAbility {
   }
 
   onBackground() {
-      // Ability has back to background
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+    // Ability has back to background
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+    PreferencesUtil.createPreferences(this.context)
+    FormUtils.getFormInfo(this.context).then((formInfo)=>{
+      console.log('Get formInfo OK');
+      FormUtils.updateForm(formInfo,this.context)
+    }).catch((e)=>{
+      console.log('Get formInfo Err' + e);
+    })
   }
 }

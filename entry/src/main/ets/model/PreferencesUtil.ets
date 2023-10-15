@@ -11,7 +11,8 @@ const KEY_BackgroundPicture = 'BackgroundPicture'
 export class PreferencesUtil {
   createPreferences(context: Context) {
     let Preferences: Function = (() => {
-      let preferences: Promise<dataPreferences.Preferences> = dataPreferences.getPreferences(context,
+      console.log('preferencedir'+context.preferencesDir)
+      let preferences: Promise<dataPreferences.Preferences> = dataPreferences.getPreferences(context.getApplicationContext(),
         PREFERENCES_NAME);
       return preferences;
     });
