@@ -25,13 +25,15 @@ class FormUtils{
     await PreferencesUtil.getData('water').then((val)=>{
       console.log('waterval:'+val)
     })
-    // await PreferencesUtil.hasData('formId').then((isExist)=>{
-    //   if(isExist){
-    //     console.log('preference have formId')
-    //   }
-    //   else
-    //     console.log('preference not have formId')
-    // })
+    await PreferencesUtil.hasData('formId').then((isExist)=>{
+      if(isExist){
+        console.log('preference have formId')
+      }
+      else
+        console.log('preference not have formId')
+    }).catch((e)=>{
+      console.log("Stack:"+e.stack)
+    })
     formInfo.formId = await PreferencesUtil.getData('formId');
     formInfo.formName = await PreferencesUtil.getData('formName');
     formInfo.formDimension = await PreferencesUtil.getData('formDimension');

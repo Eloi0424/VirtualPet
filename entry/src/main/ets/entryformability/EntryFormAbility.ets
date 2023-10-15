@@ -20,9 +20,12 @@ export default class EntryFormAbility extends FormExtensionAbility {
         formName: formName,
         formDimension: formDimension
       };
-      FormUtils.insertFormData(formInfo,this.context).then(()=>{
+      FormUtils.insertFormData(formInfo,this.context).then(async ()=>{
         console.log('formInfo save ok')
         FormUtils.updateForm(formInfo,this.context)
+        // if(PreferencesUtil.isCAS != null){
+        //   await PreferencesUtil.isCAS
+        // }
         PreferencesUtil.saveData('water',0)
       })
     }

@@ -9,6 +9,7 @@ const KEY_BackgroundPicture = 'BackgroundPicture'
  * The PreferencesUtil provides preferences of create, save and query.
  */
 export class PreferencesUtil {
+  isCAS:Promise<void> = null;
   createPreferences(context: Context) {
     let Preferences: Function = (() => {
       console.log('preferencedir'+context.preferencesDir)
