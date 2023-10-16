@@ -5,7 +5,7 @@ import { InteractBar } from '../view/components/InteractBar'
 import  PreferencesUtil  from '../model/PreferencesUtil'
 import Logger from '../common/utils/Logger'
 import { CustomDialogConversation } from '../view/components/CustomDialogConversation'
-
+import http from '@ohos.net.http';
 
 const TAG = '[Pet]';
 @Component
@@ -44,7 +44,25 @@ export struct Pet {
 
   onAccept() {
     console.log(this.inputValue)
-    //todo request result
+
+
+    let httpRequest = http.createHttp()
+
+    let promise = httpRequest.request('http://192.168.43.12:5000/conversation',{
+      method:http.RequestMethod.POST,
+      extraData:{
+        'prompt':this.inputValue
+      },
+      connectTimeout:120000,
+      readTimeout:60000,
+      header:{
+        'Content-Type':'application/json'
+      }
+    })
+    promise.then((value)=>{
+      console.log('my json string'+value.result)
+    })
+    //todo display result
   }
   existApp() {
     console.info('Click the callback in the blank area')
