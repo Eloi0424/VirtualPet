@@ -1,4 +1,3 @@
-
 let petStatusStorage = new LocalStorage();
 
 @Entry(petStatusStorage)
@@ -107,7 +106,9 @@ struct PetStatusCard {
   readonly DEFAULT_APPLE: string = '1';
 
 
-
+  @LocalStorageProp('formId') formId:string = ''
+  @LocalStorageProp('formName') formName:string = ''
+  @LocalStorageProp('formDimension') formDimension:number = 0
   @LocalStorageProp('statusList') statusList:Object[] = []
 
   build() {
@@ -116,6 +117,18 @@ struct PetStatusCard {
         .fontSize(20)
         .textAlign(TextAlign.Center)
         .margin({top:5})
+        .onClick(()=>{
+          console.info('FormAbility update form click');
+          // formId需要为实际需要刷新的卡片ID
+          postCardAction(this, {
+            'action': 'message',
+            'params': {
+              'formId': this.formId,
+              'formName': this.formName,
+              'formDimension': this.formDimension,
+            }
+          });
+        })
       Blank(5)
       List({ space: this.LIST_ITEM_SPACE }) {
         ForEach(this.statusList, item => {
@@ -148,7 +161,7 @@ struct PetStatusCard {
             .justifyContent(FlexAlign.SpaceBetween)
             .padding({ left: this.DEFAULT_12, right: this.DEFAULT_12 })
           }
-          .height('13%')
+          .height('10%')
           .borderRadius(this.DEFAULT_12)
           .onClick(item.action)
           .backgroundColor($r('app.color.white'))

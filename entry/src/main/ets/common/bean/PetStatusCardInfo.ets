@@ -10,4 +10,9 @@ export default class ProgressCardInfo {
    * Whether to display widgets
    */
   showWidget?: boolean;
+
+
+  formId?:string
+  formName?:string
+  formDimension?:number
 }

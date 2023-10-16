@@ -7,20 +7,22 @@ import formProvider from '@ohos.app.form.formProvider';
 class FormUtils{
   public async insertFormData(formInfo:FormInfo,context:Context){
     PreferencesUtil.createPreferences(context)
+    console.log('preference '+ context.filesDir)
     await PreferencesUtil.saveData('formId',formInfo.formId)
-    await PreferencesUtil.hasData('formId').then((isExist)=>{
-      if(isExist){
-        console.log('preference have formId')
-      }
-      else
-        console.log('preference not have formId')
-    })
+    // await PreferencesUtil.hasData('formId').then((isExist)=>{
+    //   if(isExist){
+    //     console.log('preference have formId')
+    //   }
+    //   else
+    //     console.log('preference not have formId')
+    // })
     await PreferencesUtil.saveData('formName',formInfo.formName)
     await PreferencesUtil.saveData('formDimension',formInfo.formDimension)
   }
 
   public async getFormInfo(context:Context){
     PreferencesUtil.createPreferences(context)
+    console.log('preference '+ context.filesDir)
     let formInfo:FormInfo;
     await PreferencesUtil.getData('water').then((val)=>{
       console.log('waterval:'+val)
@@ -56,11 +58,14 @@ class FormUtils{
     }
     return statusList
   }
-  public updateForm(formInfo:FormInfo,context:Context)
+  public async updateForm(formInfo:FormInfo,context:Context)
   {
     PreferencesUtil.createPreferences(context)
     let obj:PetStatusCardInfo = {}
-    this.getStatusList(context).then((statusList)=>{
+    obj.formId = formInfo.formId
+    obj.formName = formInfo.formName
+    obj.formDimension =formInfo.formDimension
+    await this.getStatusList(context).then((statusList)=>{
       obj.statusList = statusList
       console.log('statusListLen' + obj.statusList.length.toString())
       let formData = formBindingData.createFormBindingData(obj);

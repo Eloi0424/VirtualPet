@@ -62,7 +62,7 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
-  onForeground() {
+  async onForeground() {
       // Ability has brought to foreground
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
       setInterval(async ()=>{
@@ -71,9 +71,10 @@ export default class EntryAbility extends UIAbility {
       },5000)
   }
 
-  onBackground() {
+  async onBackground() {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+
     try {
       PreferencesUtil.createPreferences(this.context)
       FormUtils.getFormInfo(this.context).then((formInfo)=>{

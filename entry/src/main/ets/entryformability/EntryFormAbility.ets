@@ -22,11 +22,19 @@ export default class EntryFormAbility extends FormExtensionAbility {
       };
       FormUtils.insertFormData(formInfo,this.context).then(async ()=>{
         console.log('formInfo save ok')
-        FormUtils.updateForm(formInfo,this.context)
+        // await PreferencesUtil.hasData('formId').then((isExist)=>{
+        //   if(isExist){
+        //     console.log('preference have formId')
+        //   }
+        //   else
+        //     console.log('preference not have formId')
+        // })
+        await FormUtils.updateForm(formInfo,this.context)
         // if(PreferencesUtil.isCAS != null){
         //   await PreferencesUtil.isCAS
         // }
-        PreferencesUtil.saveData('water',0)
+        // await PreferencesUtil.saveData('water',0)
+
       })
     }
 
@@ -44,13 +52,30 @@ export default class EntryFormAbility extends FormExtensionAbility {
   onUpdateForm(formId) {
     // Called to notify the form provider to update a specified form.
   }
-
   onChangeFormVisibility(newStatus) {
     // Called when the form provider receives form events from the system.
   }
 
   onFormEvent(formId, message) {
     // Called when a specified message event defined by the form provider is triggered.
+
+    console.info(`FormAbility onEvent, formId = ${formId}, message: ${JSON.stringify(message)}`);
+    // PreferencesUtil.hasData('formId').then((isExist)=>{
+    //   if(isExist){
+    //     console.log('preference have formId')
+    //     PreferencesUtil.saveData('formId',formId)
+    //   }
+    //   else
+    //     console.log('preference not have formId')
+    // }).catch((e)=>{
+    //   console.log('preference err ' + e)
+    // })
+    let formInfo: FormInfo = {
+      formId: formId,
+      formName: message.formName,
+      formDimension: message.formDimension
+    };
+    FormUtils.updateForm(formInfo,this.context)
   }
 
   onRemoveForm(formId) {
