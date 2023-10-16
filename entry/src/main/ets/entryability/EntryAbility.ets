@@ -38,6 +38,10 @@ export default class EntryAbility extends UIAbility {
         PreferencesUtil.saveData('petName', "Alice")
       }
     })
+    setInterval(async ()=>{
+      await StatusDecline.decline('water',1)
+      await StatusDecline.decline('food',1)
+    },5000)
   }
 
   onDestroy() {
@@ -65,27 +69,22 @@ export default class EntryAbility extends UIAbility {
   async onForeground() {
       // Ability has brought to foreground
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
-      setInterval(async ()=>{
-         await StatusDecline.decline('water',1)
-        await StatusDecline.decline('food',1)
-      },5000)
   }
 
   async onBackground() {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
-
-    try {
-      PreferencesUtil.createPreferences(this.context)
-      FormUtils.getFormInfo(this.context).then((formInfo)=>{
-        console.log('Get formInfo OK');
-        FormUtils.updateForm(formInfo,this.context)
-      }).catch((e)=>{
-        console.log("Stack:"+e.stack)
-      })
-    }catch (e){
-      console.log("CStack:"+e.stack)
-    }
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Exit Ability onBackground');
+    // try {
+    //   PreferencesUtil.createPreferences(this.context)
+    //   FormUtils.getFormInfo(this.context).then((formInfo)=>{
+    //     console.log('Get formInfo OK');
+    //     FormUtils.updateForm(formInfo,this.context)
+    //   }).catch((e)=>{
+    //     console.log("Stack:"+e.stack)
+    //   })
+    // }catch (e){
+    //   console.log("CStack:"+e.stack)
+    // }
+    // hilog.info(0x0000, 'testTag', '%{public}s', 'Exit Ability onBackground');
   }
 }

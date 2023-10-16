@@ -161,7 +161,7 @@ struct PetStatusCard {
             .justifyContent(FlexAlign.SpaceBetween)
             .padding({ left: this.DEFAULT_12, right: this.DEFAULT_12 })
           }
-          .height('10%')
+          .height('12%')
           .borderRadius(this.DEFAULT_12)
           .onClick(item.action)
           .backgroundColor($r('app.color.white'))
