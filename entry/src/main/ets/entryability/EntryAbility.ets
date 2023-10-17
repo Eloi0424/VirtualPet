@@ -23,6 +23,12 @@ export default class EntryAbility extends UIAbility {
         }
       })
     }
+    PreferencesUtil.hasData('isResultOfPromptArrive').then((exist)=>{
+      if(!exist){
+        Logger.info("Set default:",'isResultOfPromptArrive',"0")
+        PreferencesUtil.saveData('isResultOfPromptArrive', 0)
+      }
+    })
     //判断用户首选项中有无背景图片Key
     PreferencesUtil.hasData('backgroundPicture').then((exist)=>{
       if(!exist){

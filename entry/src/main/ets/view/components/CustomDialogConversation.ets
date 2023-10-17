@@ -53,15 +53,13 @@ export struct CustomDialogConversation{
             console.log('my json string')
             this.resultOfPrompt = '你好'
             console.log('my json string'+this.resultOfPrompt)
-            promise.then((value)=>{
+
+
+            promise.then(async (value)=>{
               console.log('my json string'+value.result)
-              PreferencesUtil.saveData('resultOfPrompt',JSON.parse(value.result as string)['data']['choices'][0]['content'])
+              await PreferencesUtil.saveData('resultOfPrompt',JSON.parse(value.result as string)['data']['choices'][0]['content'])
+              await PreferencesUtil.saveData('isResultOfPromptArrive',1)
             })
-
-
-
-
-
 
 
             this.controller.close()

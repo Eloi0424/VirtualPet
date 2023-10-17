@@ -14,6 +14,11 @@ export struct Pet {
   @State Gif:GifDataItem = GifDataViewModel.getGifData("vup_StartUP_Happy")
   @State GifName:string = "vup_StartUP_Happy"
   @State petName:string = "Alice"
+
+  @State intervalId:number = 0;
+  @State showLoading:number = 0 ;
+
+
   //修改名字自定义弹窗
   @State resultOfPrompt:string = '你好'
   @State textValue: string = ''
@@ -33,11 +38,7 @@ export struct Pet {
     gridCount: 4,
     customStyle: false
   })
-  // 在自定义组件即将析构销毁时将dialogController删除和置空
-  aboutToDisappear() {
-    delete this.dialogController, // 删除dialogController
-    this.dialogController = undefined // 将dialogController置空
-  }
+
   onCancel() {
     console.info('Callback when the first button is clicked')
   }
@@ -60,6 +61,24 @@ export struct Pet {
       this.petName = value
       Logger.info(TAG, 'Get the value of petName: ' + value);
     });
+
+    this.intervalId = setInterval(()=>{
+      PreferencesUtil.getData('isResultOfPromptArrive').then((isResultOfPromptArrive)=>{
+        if(isResultOfPromptArrive)
+        {
+          PreferencesUtil.getData('resultOfPrompt').then((val)=>{
+            this.resultOfPrompt = val
+          })
+          this.showLoading = 0
+        }
+      })
+    },1000)
+  }
+  // 在自定义组件即将析构销毁时将dialogController删除和置空
+  aboutToDisappear() {
+    delete this.dialogController, // 删除dialogController
+    this.dialogController = undefined // 将dialogController置空
+    clearInterval(this.intervalId)
   }
   build() {
     Column(){
@@ -71,24 +90,53 @@ export struct Pet {
             .margin({top:0})
           InteractBar({Gif:$Gif,GifName:$GifName})
           GifRender({ Gif: $Gif, GifName:$GifName})
-
-          Button('与我对话吧')
-            .type(ButtonType.Capsule)
-            .fontSize(40)
-            .stateEffect(true)
-            .onClick(()=>{
-              this.resultOfPrompt = ''
-              if (this.dialogController != undefined) {
-                this.dialogController.open()
-              }
-            })
+          Row(){
+            Button('与我对话吧')
+              .type(ButtonType.Capsule)
+              .fontColor(Color.Black)
+              .fontSize(20)
+              .stateEffect(true)
+              .backgroundColor(Color.White)
+              .width('40%')
+              .height('8%')
+              .onClick(()=>{
+                this.resultOfPrompt = ''
+                PreferencesUtil.saveData('isResultOfPromptArrive',0).then(()=>{
+                  if (this.dialogController != undefined) {
+                    this.dialogController.open()
+                  }
+                  this.showLoading = 1
+                })
+              })
+            // Button('Gen')
+            //   .type(ButtonType.Capsule)
+            //   .fontColor(Color.Black)
+            //   .fontSize(27)
+            //   .stateEffect(true)
+            //   .backgroundColor(Color.White)
+            //   .width('40%')
+            //   .height('8%')
+            //   .onClick(()=>{
+            //     PreferencesUtil.getData('resultOfPrompt').then((val)=>{
+            //       this.resultOfPrompt = val
+            //     })
+            //   })
+            if(this.showLoading)
+            {
+              Image($rawfile('Icons/loading.gif'))
+                .width('15%')
+            }
+          }
           Text(this.resultOfPrompt)
             .fontSize(20)
-            .onClick(()=>{
-              PreferencesUtil.getData('resultOfPrompt').then((val)=>{
-                this.resultOfPrompt = val
-              })
-            })
+            .width('80%')
+            .height('20%')
+            .border({width:1})
+            .backgroundColor(Color.White)
+            .borderRadius(10)
+            .margin({top:5})
+            .textAlign(TextAlign.Start)
+            .baselineOffset(30)
         }
       }
     }//main shows
