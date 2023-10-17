@@ -1,8 +1,8 @@
 import { Pet } from './Pet'
 import {Setting} from './Setting'
 import { Status } from './Status'
-
-@Entry
+let IndexStorage = new LocalStorage();
+@Entry(IndexStorage)
 @Component
 struct MainPage{
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]

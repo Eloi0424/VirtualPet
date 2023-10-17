@@ -15,7 +15,7 @@ export struct Pet {
   @State GifName:string = "vup_StartUP_Happy"
   @State petName:string = "Alice"
 
-
+  @State resultOfPrompt:string = ''
   //修改名字自定义弹窗
   @State textValue: string = ''
   @State inputValue: string = 'click me'
@@ -48,7 +48,7 @@ export struct Pet {
 
     let httpRequest = http.createHttp()
 
-    let promise = httpRequest.request('http://192.168.43.12:5000/conversation',{
+    let promise = httpRequest.request('http://10.42.251.96:5000/conversation',{
       method:http.RequestMethod.POST,
       extraData:{
         'prompt':this.inputValue
@@ -59,8 +59,11 @@ export struct Pet {
         'Content-Type':'application/json'
       }
     })
+    console.log('my json string')
     promise.then((value)=>{
       console.log('my json string'+value.result)
+      this.resultOfPrompt = JSON.parse(value.result as string)['data']['choices'][0]['content']
+      console.log('my json string'+this.resultOfPrompt)
     })
     //todo display result
   }
@@ -96,10 +99,13 @@ export struct Pet {
             .fontSize(40)
             .stateEffect(true)
             .onClick(()=>{
+              this.resultOfPrompt = ''
               if (this.dialogController != undefined) {
                 this.dialogController.open()
               }
             })
+          Text(this.resultOfPrompt)
+            .fontSize(20)
         }
       }
     }//main shows
