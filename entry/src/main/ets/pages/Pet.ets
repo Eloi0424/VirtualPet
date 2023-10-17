@@ -14,9 +14,8 @@ export struct Pet {
   @State Gif:GifDataItem = GifDataViewModel.getGifData("vup_StartUP_Happy")
   @State GifName:string = "vup_StartUP_Happy"
   @State petName:string = "Alice"
-
-  @State resultOfPrompt:string = ''
   //修改名字自定义弹窗
+  @State resultOfPrompt:string = '你好'
   @State textValue: string = ''
   @State inputValue: string = 'click me'
   dialogController: CustomDialogController = new CustomDialogController({
@@ -24,7 +23,8 @@ export struct Pet {
       cancel: this.onCancel,
       confirm: this.onAccept,
       textValue: $textValue,
-      inputValue: $inputValue
+      inputValue: $inputValue,
+      resultOfPrompt:$resultOfPrompt
     }),
     cancel: this.existApp,
     autoCancel: true,
@@ -43,28 +43,6 @@ export struct Pet {
   }
 
   onAccept() {
-    console.log(this.inputValue)
-
-
-    let httpRequest = http.createHttp()
-
-    let promise = httpRequest.request('http://10.42.251.96:5000/conversation',{
-      method:http.RequestMethod.POST,
-      extraData:{
-        'prompt':this.inputValue
-      },
-      connectTimeout:120000,
-      readTimeout:60000,
-      header:{
-        'Content-Type':'application/json'
-      }
-    })
-    console.log('my json string')
-    promise.then((value)=>{
-      console.log('my json string'+value.result)
-      this.resultOfPrompt = JSON.parse(value.result as string)['data']['choices'][0]['content']
-      console.log('my json string'+this.resultOfPrompt)
-    })
     //todo display result
   }
   existApp() {
@@ -106,6 +84,11 @@ export struct Pet {
             })
           Text(this.resultOfPrompt)
             .fontSize(20)
+            .onClick(()=>{
+              PreferencesUtil.getData('resultOfPrompt').then((val)=>{
+                this.resultOfPrompt = val
+              })
+            })
         }
       }
     }//main shows
